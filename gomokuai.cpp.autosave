@@ -1,0 +1,26 @@
+#include "gomokuai.h"
+#include <QDebug>
+#include <cmath>
+#include <ctime>
+const int GomokuAi::AI_PLAYER;
+GomokuAi::GomokuAi(QObject *parent) : QObject(parent)
+{
+}
+QPoint GomokuAi::searchGoodPos(Board sourceboard)
+{
+ memcpy(destinboard,sourceboard,sizeof(destinboard));
+ int x=qrand()%BoardWidget::BOARD_WIDTH;
+ int y=qrand()%BoardWidget::BOARD_HEIGHT;
+ while(destinboard[x][y]!=BoardWidget::NO_PIECE)
+ {
+     x=qrand()%BoardWidget::BOARD_WIDTH;
+     y=qrand()%BoardWidget::BOARD_HEIGHT;
+ }
+ bestPos=QPoint(x,y);
+ return bestPos;
+}
+
+int GomokuAi::evaluate(Board nboard)
+{
+    
+}
